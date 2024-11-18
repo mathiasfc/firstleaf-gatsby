@@ -1,64 +1,61 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 import * as styles from "./index.module.scss";
 
-export default class Countdown extends React.Component {
-  static propTypes = {
-    seconds: PropTypes.number.isRequired,
-    label: PropTypes.string,
-    loop: PropTypes.bool,
-    customClass: PropTypes.string,
-    onFinish: PropTypes.func,
-  };
+type CountdownProps = {
+  /** Total seconds for the countdown. */
+  seconds: number;
 
-  static defaultProps = {
-    loop: false,
-    label: "Reserving your wines for",
-    customClass: "",
-    onFinish: () => {},
-  };
+  /** Optional label displayed above the timer. */
+  label?: string;
 
-  constructor(props) {
-    super(props);
+  /** Whether the countdown should restart after reaching 0. */
+  loop?: boolean;
 
-    this.state = {
-      seconds: props.seconds,
-    };
-  }
+  /** Additional CSS class for custom styles. */
+  customClass?: string;
 
-  componentDidMount() {
-    setInterval(() => {
-      this.setState((prevState) => {
-        const end = this.props.loop ? this.props.seconds : 0;
-        const remaining = prevState.seconds > 0 ? prevState.seconds - 1 : end;
-        return { seconds: remaining };
+  /** Callback when the countdown finishes. */
+  onFinish?: () => void;
+};
+
+const Countdown: React.FC<CountdownProps> = ({
+  seconds: initialSeconds,
+  label = "Reserving your wines for",
+  loop = false,
+  customClass = "",
+  onFinish = null,
+}) => {
+  const [seconds, setSeconds] = useState<number>(initialSeconds);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSeconds((prevSeconds) => {
+        const end = loop ? initialSeconds : 0;
+        return prevSeconds > 0 ? prevSeconds - 1 : end;
       });
     }, 1000);
-  }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    const { seconds } = this.state;
-    if (seconds === 0) {
-      this.props.onFinish();
+    return () => clearInterval(intervalId);
+  }, [initialSeconds, loop]);
+
+  useEffect(() => {
+    if (seconds === 0 && onFinish) {
+      onFinish();
     }
-  }
+  }, [seconds, onFinish]);
 
-  render() {
-    const { label, customClass } = this.props;
-    const { seconds } = this.state;
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    const counter = `00:${`0${minutes}`.slice(
-      -2
-    )}:${`0${remainingSeconds}`.slice(-2)}`;
+  const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const remainingSeconds = String(seconds % 60).padStart(2, "0");
+  const counter = `00:${minutes}:${remainingSeconds}`;
 
-    return (
-      <div className={`${styles.countdown} ${customClass}`}>
-        {label && (
-          <div className={`${styles.label} countdown-label`}>{label}</div>
-        )}
-        <div className={`${styles.counter} countdown-counter`}>{counter}</div>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`${styles.countdown} ${customClass}`}>
+      {label && (
+        <div className={`${styles.label} countdown-label`}>{label}</div>
+      )}
+      <div className={`${styles.counter} countdown-counter`}>{counter}</div>
+    </div>
+  );
+};
+
+export default Countdown;
