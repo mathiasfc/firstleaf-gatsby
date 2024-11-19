@@ -1,0 +1,40 @@
+@import "breakpoints";
+@import "variables";
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  @include center-flex;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.innerHeaderContainer {
+  @include center-flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 15px;
+  max-width: $layout-max-width;
+
+  .logo {
+    width: auto;
+    height: 20px;
+
+    @media (min-width: 400px) {
+      height: 30px;
+    }
+  }
+
+  & > div {
+    @include center-flex;
+    gap: 20px;
+  }
+
+  @include media(lg) {
+    padding: 20px;
+  }
+}

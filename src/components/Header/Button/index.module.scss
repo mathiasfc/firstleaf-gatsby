@@ -1,0 +1,22 @@
+@import "variables";
+
+.button {
+  background-color: $first-leaf-color;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($first-leaf-color, 10%);
+  }
+
+  @media (min-width: 400px) {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
