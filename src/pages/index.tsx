@@ -18,13 +18,13 @@ const HomePage = (): JSX.Element => (
     <h1 style={headingStyles}>Choose a challenge:</h1>
     <ul>
       <li>
-        <a href="/countries">Countries</a>
+        <a href="/countries">Countries (done)</a>
       </li>
       <li>
         <a href="/bucket">Bucket</a>
       </li>
       <li>
-        <a href="/promo">Promo</a>
+        <a href="/promo">Promo (done)</a>
       </li>
     </ul>
   </main>
