@@ -32,16 +32,16 @@ const CountryDetail: React.FC<CountryDetailProps> = ({ data }) => {
   return (
     <div style={{ padding: "30px" }}>
       <Link to={"/countries"}>{`< Back`}</Link>
-      <h1>{country.name.common || "Unknown Country"}</h1>
-      <p>Capital: {country.capital[0] || "Unknown"}</p>
-      <p>Population: {country.population ?? "Unknown"}</p>
-      <p>Region: {country.region || "Unknown"}</p>
-      {country.flags?.png && (
+      <h1>{country?.name?.common ?? "Unknown Country"}</h1>
+      <p>Capital: {country?.capital?.[0] ?? "Unknown"}</p>
+      <p>Population: {country?.population ?? "Unknown"}</p>
+      <p>Region: {country?.region ?? "Unknown"}</p>
+      {country?.flags?.png && (
         <img
           height={60}
           width={60}
           src={country.flags.png}
-          alt={`Flag of ${country.name.common}`}
+          alt={`Flag of ${country?.name?.common ?? "Unknown Country"}`}
         />
       )}
     </div>
