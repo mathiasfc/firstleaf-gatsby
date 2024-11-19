@@ -5,7 +5,7 @@ import { useProducts } from "../src/hooks/useProducts";
 import Promo from "../src/pages/promo";
 import mockProducts from "./db.json";
 
-const mockedUseProduct = useProducts as jest.Mock<object>; 
+const mockedUseProduct = useProducts as jest.Mock<object>;
 
 jest.mock("../src/hooks/useProducts");
 
@@ -17,10 +17,8 @@ const QueryWrapper: FC<Props> = ({ children }) => {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
-  )
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
 };
 
 describe("promo page", () => {
@@ -62,18 +60,51 @@ describe("promo page", () => {
     );
 
     expect(getByText(/5:00/i)).toBeInTheDocument();
-  })
+  });
 
   it("should show 5 products", async () => {
     expect.assertions(1);
-    mockedUseProduct.mockImplementation(() => ({ isLoading: false, data: mockProducts }));
+    mockedUseProduct.mockImplementation(() => ({
+      isLoading: false,
+      data: mockProducts,
+    }));
 
-    const { getAllByRole  } = render(
+    const { getAllByRole } = render(
       <QueryWrapper>
         <Promo />
       </QueryWrapper>
     );
 
-    expect(getAllByRole('listitem')).toHaveLength(6);
-  })
+    expect(getAllByRole("listitem")).toHaveLength(10);
+  });
+
+  it("should show loading message when data is loading", () => {
+    mockedUseProduct.mockImplementation(() => ({
+      isLoading: true,
+      data: [],
+    }));
+
+    const { getByText } = render(
+      <QueryWrapper>
+        <Promo />
+      </QueryWrapper>
+    );
+
+    expect(getByText("Loading...")).toBeInTheDocument();
+  });
+
+  it("should show no products available message when no products are returned", () => {
+    mockedUseProduct.mockImplementation(() => ({
+      isLoading: false,
+      data: [],
+    }));
+
+    const { getByText } = render(
+      <QueryWrapper>
+        <Promo />
+      </QueryWrapper>
+    );
+
+    expect(getByText("No products available.")).toBeInTheDocument();
+  });
 });
