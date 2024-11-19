@@ -18,7 +18,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
       <div className={styles.productInfo}>
         <ProductMedal award_highlights={product.award_highlights} />
-        <h3 className={styles.productTitle}>{product.display_name}</h3>
+        <h1 className={styles.productTitle}>{product.display_name}</h1>
         <p className={styles.productTagLine}>{product.tag_line}</p>
         <ProductPrice
           retailPrice={product.display_msrp}

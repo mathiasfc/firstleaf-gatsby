@@ -26,14 +26,19 @@ const ColorFilter: React.FC<ColorFilterProps> = ({
   onColorChange,
   productCount,
 }) => {
+  const selectId = "color-filter-select";
+
   return (
     <div className={styles.filterContainer}>
       <h1>Showing {productCount} results</h1>
 
       <div className={styles.innerFilterContainer}>
         <img src={filterIcon} alt="Filter icon" />
-        <label className={styles.filterLabel}>Color</label>
+        <label className={styles.filterLabel} htmlFor={selectId}>
+          Color
+        </label>
         <select
+          id={selectId}
           className={styles.filterSelect}
           value={selectedColor}
           onChange={(e) => onColorChange(e.target.value)}
