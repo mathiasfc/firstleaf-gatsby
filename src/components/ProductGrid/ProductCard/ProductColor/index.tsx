@@ -1,9 +1,9 @@
 import React from "react";
 import * as styles from "./index.module.scss";
 
-interface ProductColorProps {
+type ProductColorProps = {
   color: string;
-}
+};
 
 const ProductColor: React.FC<ProductColorProps> = ({ color }) => {
   const isRedWine = color.toLowerCase() === "red";

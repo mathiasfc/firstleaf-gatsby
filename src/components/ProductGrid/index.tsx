@@ -4,6 +4,11 @@ import ProductCard from "./ProductCard";
 import { useProducts } from "../../hooks/useProducts";
 import * as styles from "./index.module.scss";
 
+/**
+ * The `ProductGrid` component renders a grid of product cards with a color filter.
+ * It fetches the product data using a custom hook (`useProducts`) and allows users
+ * to filter the products by color.
+ */
 const ProductGrid: React.FC = () => {
   const { data, isLoading } = useProducts();
   const [selectedColor, setSelectedColor] = useState<string>("");

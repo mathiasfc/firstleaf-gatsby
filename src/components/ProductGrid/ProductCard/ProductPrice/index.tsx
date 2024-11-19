@@ -1,16 +1,22 @@
 import React from "react";
 import * as styles from "./index.module.scss";
 
-interface ProductPriceProps {
+type ProductPriceProps = {
+  /** The current selling price of the product. */
   price: string;
-  msrp: string;
-}
 
-const ProductPrice: React.FC<ProductPriceProps> = ({ price, msrp }) => {
+  /** The original retail price of the product, typically the MSRP (Manufacturer's Suggested Retail Price). */
+  retailPrice: string;
+};
+
+/**
+ * A component that displays the price of a product, including the retail price (if different from the current price).
+ */
+const ProductPrice: React.FC<ProductPriceProps> = ({ price, retailPrice }) => {
   return (
     <div className={styles.productPrice}>
-      {msrp && msrp !== price && (
-        <span className={styles.displayMsrp}>{msrp}</span>
+      {retailPrice && retailPrice !== price && (
+        <span className={styles.displayMsrp}>{retailPrice}</span>
       )}
       <span className={styles.displayPrice}>{price}</span>
     </div>

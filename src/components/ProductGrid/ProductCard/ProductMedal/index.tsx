@@ -22,6 +22,12 @@ type ProductMedalProps = {
   };
 };
 
+/**
+ * A component that renders medals for a product based on its award highlights.
+ *
+ * @returns A JSX element displaying the product medals or a placeholder if no medals are present.
+ */
+
 const ProductMedal: React.FC<ProductMedalProps> = ({ award_highlights }) => {
   const hasMedals =
     award_highlights &&
