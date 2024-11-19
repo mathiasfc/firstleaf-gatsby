@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ColorFilter from "@components/ColorFilter";
 import ProductCard from "@components/ProductGrid/ProductCard";
 import EmptyState from "@components/ProductGrid/EmptyState";
+import PlaceholderLoader from "@components/ProductGrid/PlaceholderLoader";
 import { useProducts } from "@hooks/useProducts";
 import * as styles from "./index.module.scss";
 
@@ -15,8 +16,7 @@ const ProductGrid: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>("");
 
   if (isLoading) {
-    /** @todo - A fancy loading placeholder */
-    return <div>Loading...</div>;
+    return <PlaceholderLoader />;
   }
 
   if (!data || data.length === 0) {
