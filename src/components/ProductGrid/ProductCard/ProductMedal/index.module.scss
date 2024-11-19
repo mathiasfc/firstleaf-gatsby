@@ -1,0 +1,28 @@
+@import "breakpoints";
+
+.medalRow {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+}
+
+.medal,
+.placeholder {
+  width: 60px;
+  height: 60px;
+}
+
+.medal {
+  &:not(:first-child) {
+    // Control the horizontal overlap
+    margin-left: -20px;
+  }
+}
+
+.placeholder {
+  display: none;
+
+  @include media(lg) {
+    display: block;
+  }
+}

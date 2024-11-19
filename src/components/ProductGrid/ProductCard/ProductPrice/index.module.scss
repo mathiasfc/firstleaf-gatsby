@@ -1,0 +1,35 @@
+@import "variables";
+@import "breakpoints";
+
+.productPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.125rem;
+  width: 100%;
+  margin: 10px 0px;
+
+  @include media(md) {
+    align-items: flex-start;
+  }
+
+  @include media(lg) {
+    align-items: center;
+  }
+
+  @include media(xl) {
+    align-items: flex-start;
+  }
+}
+
+.displayPrice {
+  color: $first-leaf-color;
+  font-weight: bold;
+}
+
+.displayMsrp {
+  font-size: 0.875rem;
+  color: #999;
+  text-decoration: line-through;
+  margin-top: 5px;
+}

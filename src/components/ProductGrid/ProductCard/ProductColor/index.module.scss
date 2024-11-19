@@ -1,0 +1,50 @@
+@import "variables";
+@import "breakpoints";
+
+.productColor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  @include media(md) {
+    justify-content: flex-start;
+  }
+
+  @include media(lg) {
+    justify-content: center;
+  }
+
+  @include media(xl) {
+    justify-content: flex-start;
+  }
+}
+
+.redWineLabel {
+  background-color: $red-wine-color;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin: 10px 0;
+}
+
+.whiteWineLabel {
+  background-color: $white-wine-color;
+  color: black;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin: 10px 0;
+}
+
+.labelText {
+  font-size: 0.75rem;
+  font-weight: bold;
+
+  @include media(md) {
+    font-size: 0.875rem;
+  }
+
+  @include media(lg) {
+    font-size: 1rem;
+  }
+}

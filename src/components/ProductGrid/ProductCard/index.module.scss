@@ -1,0 +1,128 @@
+@import "breakpoints";
+
+@mixin center-column {
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin reset-padding {
+  padding-left: 0;
+  padding-top: 10px;
+}
+
+@mixin text-alignment($alignment) {
+  text-align: $alignment;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px 10px;
+  border: 1px solid #f0f0f0;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .imageContainer {
+    display: flex;
+    align-items: center;
+    flex: 0.5;
+    max-width: 100%;
+    min-width: 60px;
+
+    img {
+      height: auto;
+      object-fit: contain;
+      height: 200px;
+    }
+  }
+
+  .productInfo {
+    flex: 1;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .productTitle,
+  .productTagLine,
+  .productPairings {
+    margin: 0;
+  }
+
+  .productTitle {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .productTagLine {
+    font-size: 0.875rem;
+    color: #777;
+    margin-top: 10px;
+    @include text-alignment(center);
+  }
+
+  .productPairings {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #666;
+  }
+}
+
+@include media(md) {
+  .productCard {
+    flex-direction: row;
+
+    .productInfo {
+      align-items: start;
+    }
+
+    .productTitle,
+    .productTagLine,
+    .productPairings {
+      @include text-alignment(start);
+    }
+  }
+}
+
+@include media(lg) {
+  .productCard {
+    @include center-column;
+
+    .productInfo {
+      padding-left: 0px;
+      align-items: center;
+    }
+
+    .productTitle,
+    .productTagLine,
+    .productPairings {
+      @include text-alignment(center);
+    }
+  }
+}
+
+@include media(xl) {
+  .productCard {
+    flex-direction: row;
+
+    .productInfo {
+      align-items: flex-start;
+    }
+
+    .productTitle,
+    .productTagLine,
+    .productPairings {
+      @include text-alignment(start);
+    }
+  }
+}
