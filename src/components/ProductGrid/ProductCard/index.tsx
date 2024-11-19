@@ -13,7 +13,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (
     <li className={styles.productCard}>
       <div className={styles.imageContainer}>
-        <ProductImage src={product.images} alt={product.name} />
+        <ProductImage src={product.images} alt={`Image of ${product.name}`} />
       </div>
 
       <div className={styles.productInfo}>

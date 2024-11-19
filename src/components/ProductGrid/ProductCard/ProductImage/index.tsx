@@ -7,7 +7,9 @@ type ProductImageProps = {
 };
 
 const ProductImage: React.FC<ProductImageProps> = ({ src, alt }) => {
-  return <img src={src} alt={alt} className={styles.productImage} />;
+  return (
+    <img src={src} alt={alt} className={styles.productImage} loading="lazy" />
+  );
 };
 
 export default ProductImage;
