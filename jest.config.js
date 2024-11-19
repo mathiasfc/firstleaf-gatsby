@@ -5,6 +5,9 @@ module.exports = {
   moduleNameMapper: {
     "\\.module\\.scss$": "<rootDir>/test/__mocks__/file-mock.js",
     "\\.svg$": "<rootDir>/test/__mocks__/file-mock.js",
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
+    "^@styles/(.*)$": "<rootDir>/src/styles/$1",
+    "^@hooks/(.*)$": "<rootDir>/src/hooks/$1",
   },
   testMatch: [
     "**/__tests__/**/*.(ts|tsx|js|jsx)",
