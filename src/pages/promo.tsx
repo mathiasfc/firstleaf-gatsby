@@ -1,15 +1,12 @@
 import React from "react";
-import Countdown from "../components/Countdown";
+import Header from "../components/Header";
 import ProductGrid from "../components/ProductGrid";
 
-const Counter = (): JSX.Element => (
+const PromoPage: React.FC = (): JSX.Element => (
   <>
-    <header>
-      <Countdown seconds={300} />
-    </header>
-    
+    <Header />
     <ProductGrid />
   </>
 );
 
-export default Counter;
+export default PromoPage;
