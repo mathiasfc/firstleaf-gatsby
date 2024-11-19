@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ColorFilter from "../ColorFilter";
-import ProductCard from "./ProductCard";
-import { useProducts } from "../../hooks/useProducts";
+import ColorFilter from "@components/ColorFilter";
+import ProductCard from "@components/ProductGrid/ProductCard";
+import { useProducts } from "@hooks/useProducts";
 import * as styles from "./index.module.scss";
 
 /**

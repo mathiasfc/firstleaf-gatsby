@@ -11,6 +11,17 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@components": "src/components",
+          "@styles": "src/styles",
+          "@hooks": "src/hooks",
+        },
+        extensions: ["js", "jsx", "ts", "tsx"],
+      },
+    },
+    {
       resolve: "gatsby-plugin-sass",
       options: {
         sassOptions: {

@@ -1,8 +1,8 @@
 import React from "react";
-import ProductImage from "./ProductImage";
-import ProductPrice from "./ProductPrice";
-import ProductColor from "./ProductColor";
-import ProductMedal from "./ProductMedal";
+import ProductImage from "@components/ProductGrid/ProductCard/ProductImage";
+import ProductPrice from "@components/ProductGrid/ProductCard/ProductPrice";
+import ProductColor from "@components/ProductGrid/ProductCard/ProductColor";
+import ProductMedal from "@components/ProductGrid/ProductCard/ProductMedal";
 import { Product } from "../../../types/Products";
 import * as styles from "./index.module.scss";
 

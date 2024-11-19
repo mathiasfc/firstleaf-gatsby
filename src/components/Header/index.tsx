@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "./Button";
-import Countdown from "../Countdown";
+import Button from "@components/Header/Button";
+import Countdown from "@components/Countdown";
 import logo from "../../images/logo.svg";
 import * as styles from "./index.module.scss";
 
