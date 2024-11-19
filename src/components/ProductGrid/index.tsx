@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ColorFilter from "@components/ColorFilter";
 import ProductCard from "@components/ProductGrid/ProductCard";
+import EmptyState from "@components/ProductGrid/EmptyState";
 import { useProducts } from "@hooks/useProducts";
 import * as styles from "./index.module.scss";
 
@@ -19,8 +20,7 @@ const ProductGrid: React.FC = () => {
   }
 
   if (!data || data.length === 0) {
-    /** @todo - A fancy message */
-    return <div>No products available.</div>;
+    return <EmptyState message="No products available." />;
   }
 
   // Filter products based on the selected color
@@ -30,7 +30,7 @@ const ProductGrid: React.FC = () => {
 
   // Show message when no products match the filter
   if (filteredProducts.length === 0) {
-    return <div>No products found for the selected color.</div>;
+    return <EmptyState message="No products found for the selected color." />;
   }
 
   // Get a list of unique colors from the products
