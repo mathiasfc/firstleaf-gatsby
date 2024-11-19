@@ -51,7 +51,7 @@ const Countdown: React.FC<CountdownProps> = ({
   return (
     <div className={`${styles.countdown} ${customClass}`}>
       {label && (
-        <div className={`${styles.label} countdown-label`}>{label}</div>
+        <div className={`${styles.label} countdown-label`}>{label} </div>
       )}
       <div className={`${styles.counter} countdown-counter`}>{counter}</div>
     </div>

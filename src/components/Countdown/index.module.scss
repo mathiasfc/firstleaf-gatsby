@@ -1,46 +1,25 @@
-%robotoBook {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-}
-
-$bright-green: #333;
+@import "breakpoints";
 
 .countdown {
-  @extend %robotoBook;
+  display: flex;
 
   .label {
-    font-size: 14px;
-    color: #7f7f7f;
+    display: none;
+    font-size: 0.875rem;
+    color: #333;
     line-height: 1.29;
     letter-spacing: 0.4px;
+
+    @media (min-width: 600px) {
+      display: block;
+    }
   }
 
   .counter {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
     letter-spacing: 0.5px;
-    color: $bright-green;
-  }
-}
-
-.blink {
-  animation: blinker 1s linear infinite;
-
-  .label,
-  .counter {
-    color: red;
-  }
-}
-
-.times-up {
-  .label,
-  .counter {
-    color: red;
-  }
-}
-
-@keyframes blinker {
-  50% {
-    opacity: 0;
+    color: green;
+    margin-left: 5px;
   }
 }
