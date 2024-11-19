@@ -18,6 +18,10 @@ type CountdownProps = {
   onFinish?: () => void;
 };
 
+/**
+ * `Countdown` is a timer component that counts down from the specified number of seconds.
+ * It can display an optional label and execute a callback when the countdown finishes.
+ */
 const Countdown: React.FC<CountdownProps> = ({
   seconds: initialSeconds,
   label = "Reserving your wines for",
