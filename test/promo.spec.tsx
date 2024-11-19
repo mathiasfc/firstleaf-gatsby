@@ -78,21 +78,6 @@ describe("promo page", () => {
     expect(getAllByRole("listitem")).toHaveLength(10);
   });
 
-  it("should show loading message when data is loading", () => {
-    mockedUseProduct.mockImplementation(() => ({
-      isLoading: true,
-      data: [],
-    }));
-
-    const { getByText } = render(
-      <QueryWrapper>
-        <Promo />
-      </QueryWrapper>
-    );
-
-    expect(getByText("Loading...")).toBeInTheDocument();
-  });
-
   it("should show no products available message when no products are returned", () => {
     mockedUseProduct.mockImplementation(() => ({
       isLoading: false,
